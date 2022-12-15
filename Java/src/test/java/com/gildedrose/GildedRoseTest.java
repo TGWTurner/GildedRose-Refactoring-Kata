@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -153,7 +154,7 @@ class GildedRoseTest {
         assertEquals(expected, app.items[0].quality);
     }
 
-    @Test
+    @ParameterizedTest
     @ValueSource(ints = {10,9,8,7,6})
     void testBackstagePassesIncreaseQualityByTwoBetweenSizAndTenSellInDays(int sellIn) {
         int expected = 5;
@@ -187,8 +188,8 @@ class GildedRoseTest {
         assertEquals(expected, app.items[0].quality);
     }
 
-    @Test
-    @ValueSource(ints = {5,4,3,2,1,0})
+    @ParameterizedTest
+    @ValueSource(ints = {5,4,3,2,1})
     void testBackstagePassesIncreaseQualityByFiveWithLessThanFiveSellInDays(int sellIn) {
         int expected = 5;
         Item[] items = new Item[] {
@@ -200,6 +201,17 @@ class GildedRoseTest {
 
         expected += 3;
         assertEquals(expected, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstagePassesQualityZeroOnZeroSellInDays() {
+        Item[] items = new Item[] {
+            new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10)
+        };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
     }
 
     /**
