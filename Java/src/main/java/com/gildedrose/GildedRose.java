@@ -13,10 +13,20 @@ class GildedRose {
         }
     }
 
+    private void decreaseItemQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
+        }
+    }
+
+    private void decreaseSellInDays(Item item) {
+        item.sellIn = item.sellIn - 1;
+    }
+
     private void updateAgedBrieQuality(Item item) {
         increaseItemQuality(item);
 
-        item.sellIn = item.sellIn - 1;
+        decreaseSellInDays(item);
 
         if (item.sellIn < 0) {
             increaseItemQuality(item);
@@ -24,7 +34,7 @@ class GildedRose {
     }
     private void updateBackstagePassQuality(Item item) {
         if (item.quality < 50) {
-            item.quality = item.quality + 1;
+            increaseItemQuality(item);
 
             if (item.sellIn < 11) {
                 increaseItemQuality(item);
@@ -35,7 +45,7 @@ class GildedRose {
             }
         }
 
-        item.sellIn = item.sellIn - 1;
+        decreaseSellInDays(item);
 
         if (item.sellIn < 0) {
             item.quality = 0;
@@ -43,16 +53,12 @@ class GildedRose {
     }
 
     private void updateStandardItemQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
+        decreaseItemQuality(item);
 
-        item.sellIn = item.sellIn - 1;
+        decreaseSellInDays(item);
 
         if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
+            decreaseItemQuality(item);
         }
     }
 
