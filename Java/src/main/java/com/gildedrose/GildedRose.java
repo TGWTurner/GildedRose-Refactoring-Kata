@@ -7,63 +7,69 @@ class GildedRose {
         this.items = items;
     }
 
+    private void increaseItemQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+        }
+    }
+
+    private void updateAgedBrieQuality(Item item) {
+        increaseItemQuality(item);
+
+        item.sellIn = item.sellIn - 1;
+
+        if (item.sellIn < 0) {
+            increaseItemQuality(item);
+        }
+    }
+    private void updateBackstagePassQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+
+            if (item.sellIn < 11) {
+                increaseItemQuality(item);
+            }
+
+            if (item.sellIn < 6) {
+                increaseItemQuality(item);
+            }
+        }
+
+        item.sellIn = item.sellIn - 1;
+
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
+    }
+
+    private void updateStandardItemQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
+        }
+
+        item.sellIn = item.sellIn - 1;
+
+        if (item.sellIn < 0) {
+            if (item.quality > 0) {
+                item.quality = item.quality - 1;
+            }
+        }
+    }
+
     public void updateQuality() {
         for (Item item : items) {
-            //check positive not negative
-            //move to method, pass the current item
-            //method will check item name and increment or decrement
-            //maybe handle"itemName" methods eg. handleAgedBrieUpdate
-            if (!item.name.equals("Aged Brie")
-                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality > 0) {
-                    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        item.quality = item.quality - 1;
-                    }
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
-
-            //could be in a handleStandardItem method
-            //then have this in the pure sulfuras method
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
-            }
-
-            //
-            if (item.sellIn < 0) {
-                //check for positive or even move to the aged brie handler
-                if (!item.name.equals("Aged Brie")) {
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.quality > 0) {
-                            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                item.quality = item.quality - 1;
-                            }
-                        }
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
-                }
+            switch (item.name) {
+                case "Aged Brie":
+                    updateAgedBrieQuality(item);
+                    break;
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    updateBackstagePassQuality(item);
+                    break;
+                case "Sulfuras, Hand of Ragnaros":
+                    //I'm an empty bucket \_/
+                    break;
+                default:
+                    updateStandardItemQuality(item);
             }
         }
     }
