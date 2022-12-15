@@ -156,7 +156,7 @@ class GildedRoseTest {
 
     @ParameterizedTest
     @ValueSource(ints = {10,9,8,7,6})
-    void testBackstagePassesIncreaseQualityByTwoBetweenSizAndTenSellInDays(int sellIn) {
+    void testBackstagePassesIncreaseQualityByTwoBetweenSixAndTenSellInDays(int sellIn) {
         int expected = 5;
         Item[] items = new Item[] {
             new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, expected)
