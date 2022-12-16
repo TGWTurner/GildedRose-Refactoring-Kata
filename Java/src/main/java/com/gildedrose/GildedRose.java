@@ -1,31 +1,18 @@
 package com.gildedrose;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class GildedRose {
     Item[] items;
-    ArrayList<SuperItem> properItems = new ArrayList<SuperItem>();
+    List<SuperItem> properItems = new ArrayList<SuperItem>();
+
+    private ItemsFactory register = new ItemsFactory();
 
     public GildedRose(Item[] items) {
         this.items = items;
 
-        for (Item item : items) {
-            switch (item.name) {
-                case "Aged Brie":
-                    properItems.add(new AgedBrieItem(item));
-                    break;
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    properItems.add(new BackstagePassItem(item));
-                    break;
-                case "Sulfuras, Hand of Ragnaros":
-                    properItems.add(new SulfurasItem(item));
-                    break;
-                default:
-                    properItems.add(new StandardItem(item));
-                    break;
-            }
-        }
+        properItems = register.map(items);
     }
 
     public void updateQuality() {
