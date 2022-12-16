@@ -45,15 +45,14 @@ public class ItemsFactory {
             .collect(Collectors.toList());
     }
 
-    private SuperItem createItem(Item i) {
-        ItemFactory f = itemFactories.getOrDefault(i.name, this::standardFactory);
-        return f.create(i);
+    private SuperItem createItem(Item item) {
+        ItemFactory f = itemFactories.getOrDefault(item.name, this::standardFactory);
+        return f.create(item);
     }
 
     private void run() {
         ItemsFactory register = new ItemsFactory();
 
-        //items as are provided to GildedRose
         Item[] items = new Item[] {
             new Item("+5 Dexterity Vest", 10, 20),
             new Item("Aged Brie", 2, 0),
@@ -70,7 +69,6 @@ public class ItemsFactory {
         System.out.println(superItems);
     }
 
-    //Main for testing, remove me later
     public static void main(String[] args) {
         new ItemsFactory().run();
     }

@@ -1,23 +1,22 @@
 package com.gildedrose;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class GildedRose {
-    Item[] items;
-    List<SuperItem> properItems = new ArrayList<SuperItem>();
-
-    private ItemsFactory register = new ItemsFactory();
+    private List<SuperItem> properItems;
 
     public GildedRose(Item[] items) {
-        this.items = items;
-
-        properItems = register.map(items);
+        ItemsFactory itemsFactory = new ItemsFactory();
+        properItems = itemsFactory.map(items);
     }
 
     public void updateQuality() {
         for (SuperItem item : properItems) {
             item.updateQuality();
         }
+    }
+
+    public List<SuperItem> getItems() {
+        return new ArrayList<SuperItem>(properItems);
     }
 }
