@@ -18,7 +18,9 @@ class GildedRoseTest {
         app.updateQuality();
 
         expected -= 1;
-        assertEquals(expected, app.items[0].quality);
+
+        SuperItem item = app.properItems.get(0);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -28,15 +30,16 @@ class GildedRoseTest {
             new Item("item", 5, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected -= 1;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
 
         app.updateQuality();
 
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -46,16 +49,17 @@ class GildedRoseTest {
             new Item("item", 1, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected -= 1;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
 
         app.updateQuality();
 
         expected -= 2;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -65,11 +69,12 @@ class GildedRoseTest {
             new Item("Aged Brie", 5, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 1;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -79,15 +84,16 @@ class GildedRoseTest {
             new Item("Aged Brie", 5, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 1;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
 
         app.updateQuality();
 
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -97,10 +103,11 @@ class GildedRoseTest {
             new Item("Sulfuras, Hand of Ragnaros", 5, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -110,14 +117,15 @@ class GildedRoseTest {
             new Item("Sulfuras, Hand of Ragnaros", 1, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
 
         app.updateQuality();
 
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
 
@@ -128,11 +136,12 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 12, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 1;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -142,16 +151,17 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 11, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 1;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
 
         app.updateQuality();
 
         expected += 2;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @ParameterizedTest
@@ -162,11 +172,12 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 2;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -176,16 +187,17 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 6, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 2;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
 
         app.updateQuality();
 
         expected += 3;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @ParameterizedTest
@@ -196,11 +208,12 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
 
         expected += 3;
-        assertEquals(expected, app.items[0].quality);
+        assertEquals(expected, item.quality);
     }
 
     @Test
@@ -209,15 +222,9 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.properItems.get(0);
 
         app.updateQuality();
-        assertEquals(0, app.items[0].quality);
+        assertEquals(0, item.quality);
     }
-
-    /**
-     * TODO:
-     *  - Test that cant inc quality > 50 for BackstagePass
-     *  - Test that BackstagePass sellIn <= 0 => quality = 0
-     *  - Check if Conjoured works?
-     */
 }

@@ -10,12 +10,12 @@ public class StandardItem extends SuperItem {
     }
 
     public void updateQuality() {
-        increaseItemQuality();
+        decreaseItemQuality();
 
         decreaseSellInDays();
 
         if (sellIn < 0) {
-            increaseItemQuality();
+            decreaseItemQuality();
         }
     }
 }
