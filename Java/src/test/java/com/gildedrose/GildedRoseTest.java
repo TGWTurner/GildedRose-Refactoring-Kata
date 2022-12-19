@@ -14,12 +14,12 @@ class GildedRoseTest {
             new Item("item", 5, expected)
         };
         GildedRose app = new GildedRose(items);
+        SuperItem item = app.getItems().get(0);
 
         app.updateQuality();
 
         expected -= 1;
 
-        SuperItem item = app.getItems().get(0);
         assertEquals(expected, item.quality);
     }
 
@@ -226,5 +226,40 @@ class GildedRoseTest {
 
         app.updateQuality();
         assertEquals(0, item.quality);
+    }
+
+    @Test
+    void testConjuredItemDecreasesQualityTwice() {
+        int expected = 5;
+        Item[] items = new Item[] {
+            new Item("Conjured", 5, expected)
+        };
+        GildedRose app = new GildedRose(items);
+        SuperItem item = app.getItems().get(0);
+
+        app.updateQuality();
+
+        expected -= 2;
+        assertEquals(expected, item.quality);
+    }
+
+    @Test
+    void testConjuredItemDecreasesQualityFourTimesOnZeroSellInDays() {
+        int expected = 10;
+        Item[] items = new Item[] {
+            new Item("Conjured", 1, expected)
+        };
+        GildedRose app = new GildedRose(items);
+        SuperItem item = app.getItems().get(0);
+
+        app.updateQuality();
+
+        expected -= 2;
+        assertEquals(expected, item.quality);
+
+        app.updateQuality();
+
+        expected -= 4;
+        assertEquals(expected, item.quality);
     }
 }

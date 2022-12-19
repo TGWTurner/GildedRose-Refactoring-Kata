@@ -3,7 +3,7 @@ package com.gildedrose;
 import java.util.*;
 
 class GildedRose {
-    private List<SuperItem> properItems;
+    private final List<SuperItem> properItems;
 
     public GildedRose(Item[] items) {
         ItemsFactory itemsFactory = new ItemsFactory();

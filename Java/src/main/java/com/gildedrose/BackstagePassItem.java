@@ -1,12 +1,8 @@
 package com.gildedrose;
 
 public class BackstagePassItem extends SuperItem {
-    public BackstagePassItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
-    }
-
     public BackstagePassItem(Item item) {
-        super(item.name, item.sellIn, item.quality);
+        super(item);
     }
 
     public void updateQuality() {

@@ -1,9 +1,6 @@
 package com.gildedrose;
 
-public class SuperItem extends Item{
-    public SuperItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
-    }
+public class SuperItem extends Item {
 
     public SuperItem(Item item) {
         super(item.name, item.sellIn, item.quality);
