@@ -14,7 +14,7 @@ class GildedRoseTest {
             new Item("item", 5, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -30,7 +30,7 @@ class GildedRoseTest {
             new Item("item", 5, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -49,7 +49,7 @@ class GildedRoseTest {
             new Item("item", 1, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -69,7 +69,7 @@ class GildedRoseTest {
             new Item("Aged Brie", 5, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -84,7 +84,7 @@ class GildedRoseTest {
             new Item("Aged Brie", 5, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -103,7 +103,7 @@ class GildedRoseTest {
             new Item("Sulfuras, Hand of Ragnaros", 5, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -117,7 +117,7 @@ class GildedRoseTest {
             new Item("Sulfuras, Hand of Ragnaros", 1, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -136,7 +136,7 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 12, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -151,7 +151,7 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 11, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -172,7 +172,7 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -187,7 +187,7 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 6, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -208,7 +208,7 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -222,7 +222,7 @@ class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
         assertEquals(0, item.quality);
@@ -235,7 +235,7 @@ class GildedRoseTest {
             new Item("Conjured", 5, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
@@ -250,7 +250,7 @@ class GildedRoseTest {
             new Item("Conjured", 1, expected)
         };
         GildedRose app = new GildedRose(items);
-        SuperItem item = app.getItems().get(0);
+        Item item = app.getItems().get(0);
 
         app.updateQuality();
 
